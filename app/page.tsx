@@ -8,21 +8,11 @@ export default async function Page() {
 
   const { data: sales } = await supabase.from('sales').select()
 
-  // return (
-  //   <ul>
-  //     {sales?.map((sale) => (
-  //       <li key={sale.id}>{sale.name}</li>
-  //     ))}
-  //   </ul>
-  // )
   return (
-    <div>
-      <h1>Sales</h1>
-      <ul>
-        {sales?.map((sale) => (
-          <li key={sale.id}>{sale.name}</li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {sales?.map((sale) => (
+        <li key={sale.id}>{sale.name}</li>
+      ))}
+    </ul>
   )
 }

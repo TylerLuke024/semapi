@@ -1,6 +1,5 @@
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
-import { SourceTextModule } from 'vm'
 
 export default async function Page() {
   const cookieStore = await cookies()
@@ -9,10 +8,13 @@ export default async function Page() {
   const { data: sales } = await supabase.from('sales').select()
 
   return (
-    <ul>
-      {sales?.map((sale) => (
-        <li key={sale.id}>{sale.name}</li>
-      ))}
-    </ul>
+    <div>
+      <h1>Sales</h1>
+      <ul>
+        {sales?.map((sale) => (
+          <li key={sale.id}>{sale.sales_date}, {sale.degC}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
